@@ -3,6 +3,7 @@
 # GERME Charlotte
 # PINCEEL Matttttttttttttttttttttttttttthieu
 # FONTAINE Aurélien 
+# DELETANG-DEVIN Noa
 
 A new Flutter project.
 

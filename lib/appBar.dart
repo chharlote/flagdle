@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'homePage.dart';
+import 'package:daltons/pageStore.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+
+class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AppStoreState state = ref.watch(appStoreProvider);
+    final AppStore store = ref.read(appStoreProvider.notifier);
+
     return AppBar(
       centerTitle: true,
       title: TextButton(
-        onPressed: () {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const HomePage()),
-          );
-        },
+        onPressed: () => store.openHome(context),
         child: const Text(
           'Flagdle',
           style: TextStyle(

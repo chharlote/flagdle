@@ -1,3 +1,4 @@
+import 'package:daltons/appBar.dart';
 import 'package:daltons/pageStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,11 +24,7 @@ class HomePage extends ConsumerWidget {
     final AppStore store = ref.read(appStoreProvider.notifier);
     
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flagdle', style: TextStyle(color: Colors.pink)),
-        centerTitle: true,
-        backgroundColor: Colors.black,
-      ),
+      appBar: CustomAppBar(),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -47,7 +44,7 @@ class HomePage extends ConsumerWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () => store.openPlay(),
+                onPressed: () => store.openPlay(context),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(150,70),
                   backgroundColor: Colors.pink,
@@ -59,7 +56,7 @@ class HomePage extends ConsumerWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () => store.openCredit(),
+                onPressed: () => store.openCredit(context),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(150,70),
                   backgroundColor: Colors.pink,
@@ -71,7 +68,7 @@ class HomePage extends ConsumerWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () => store.exit(),
+                onPressed: () => store.exit(context),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(150,70),
                   backgroundColor: Colors.pink,

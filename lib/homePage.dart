@@ -69,6 +69,7 @@ class HomePage extends ConsumerWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => store.exit(context),
+
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(150,70),
                   backgroundColor: Colors.pink,

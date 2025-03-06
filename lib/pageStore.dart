@@ -21,6 +21,7 @@ class AppStore extends StateNotifier<AppStoreState>{
     return state;
   }
 
+
   void openPlay(BuildContext context){
     // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Play()));
   }

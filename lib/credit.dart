@@ -1,12 +1,17 @@
 import 'package:daltons/homePage.dart';
 import 'package:flutter/material.dart';
 import 'appBar.dart';
+import 'package:daltons/pageStore.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Credit extends StatelessWidget {
+class Credit extends ConsumerWidget {
   const Credit({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AppStoreState state = ref.watch(appStoreProvider);
+    final AppStore store = ref.read(appStoreProvider.notifier);
+
     return Scaffold(
       appBar: const CustomAppBar(),
       body: Container(
@@ -58,13 +63,7 @@ class Credit extends StatelessWidget {
 
               Center(
                 child: ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
-                    );
-                  },
-
+                  onPressed: () => store.openHome(context),
                   icon: const Icon(Icons.arrow_back, color: Colors.white),
                   label: const Text('Retour', style: TextStyle(color: Colors.white)),
                   style: ElevatedButton.styleFrom(

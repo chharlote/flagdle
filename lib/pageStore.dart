@@ -1,6 +1,10 @@
+import 'package:daltons/homePage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:daltons/credit.dart';
+
 
 
 final appStoreProvider = StateNotifierProvider<AppStore, AppStoreState>((ref){
@@ -17,16 +21,21 @@ class AppStore extends StateNotifier<AppStoreState>{
     return state;
   }
 
-  void openPlay(){
 
+  void openPlay(BuildContext context){
+    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Play()));
   }
 
-  void openCredit(){
-
+  void openCredit(BuildContext context){
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Credit()));
   }
 
-  void exit(){
+  void exit(BuildContext context){
+    SystemNavigator.pop();
+  }
 
+  void openHome(BuildContext context){
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
   }
 }
 

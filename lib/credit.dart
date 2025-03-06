@@ -1,3 +1,4 @@
+import 'package:daltons/homePage.dart';
 import 'package:flutter/material.dart';
 import 'appBar.dart';
 
@@ -53,8 +54,28 @@ class Credit extends StatelessWidget {
               buildNomDevs('Deletang-Devin Noa'),
               buildNomDevs('Fontaine Aurélien'),
 
-              const SizedBox(height: 40),
+              const SizedBox(height: 100),
 
+              Center(
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomePage()),
+                    );
+                  },
+
+                  icon: const Icon(Icons.arrow_back, color: Colors.white),
+                  label: const Text('Retour', style: TextStyle(color: Colors.white)),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black87,
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 22),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

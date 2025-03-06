@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'homePage.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -6,19 +7,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text(
-        'Flagdle',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Colors.pinkAccent,
-          fontSize: 47,
-          fontWeight: FontWeight.bold,
+      centerTitle: true,
+      title: TextButton(
+        onPressed: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const HomePage()),
+          );
+        },
+        child: const Text(
+          'Flagdle',
+          style: TextStyle(
+            color: Colors.pinkAccent,
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
-
       backgroundColor: Colors.black,
     );
-
   }
 
   @override

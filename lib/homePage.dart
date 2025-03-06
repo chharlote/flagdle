@@ -1,4 +1,6 @@
+import 'package:daltons/pageStore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
   runApp(FlagGuessingApp());
@@ -14,9 +16,12 @@ class FlagGuessingApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AppStoreState state = ref.watch(appStoreProvider);
+    final AppStore store = ref.read(appStoreProvider.notifier);
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('Flagdle', style: TextStyle(color: Colors.pink)),
@@ -42,8 +47,7 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                },
+                onPressed: () => store.openPlay(),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(150,70),
                   backgroundColor: Colors.pink,
@@ -55,8 +59,7 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                },
+                onPressed: () => store.openCredit(),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(150,70),
                   backgroundColor: Colors.pink,
@@ -68,8 +71,7 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                },
+                onPressed: () => store.exit(),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(150,70),
                   backgroundColor: Colors.pink,

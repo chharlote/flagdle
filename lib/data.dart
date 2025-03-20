@@ -1,32 +1,40 @@
-import 'dart:convert';
-import 'dart:io';
+import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
-class DataManager {
-  final String fileName = 'data.json';
+part 'data.g.dart';
 
-  Future<File> _getFile() async {
-    final directory = await getApplicationDocumentsDirectory();
-    return File('${directory.path}/$fileName');
+@collection
+class UserData {
+  Id id = Isar.autoIncrement;
+  late String pseudo;
+  late int score;
+}
+
+class DataManager {
+  late Future<Isar> db;
+
+  DataManager() {
+    db = _initDB();
+  }
+
+  Future<Isar> _initDB() async {
+    final dir = await getApplicationDocumentsDirectory();
+    return await Isar.open([UserDataSchema], directory: dir.path);
   }
 
   Future<void> writeData(String pseudo, int score) async {
-    final file = await _getFile();
-    Map<String, dynamic> data = {'pseudo': pseudo, 'score': score};
-    String jsonData = jsonEncode(data);
-    await file.writeAsString(jsonData);
+    final isar = await db;
+    final userData = UserData()
+      ..pseudo = pseudo
+      ..score = score;
+
+    await isar.writeTxn(() async {
+      await isar.userDatas.put(userData);
+    });
   }
 
-  Future<Map<String, dynamic>?> readData() async {
-    try {
-      final file = await _getFile();
-      if (await file.exists()) {
-        String jsonData = await file.readAsString();
-        return jsonDecode(jsonData);
-      }
-    } catch (e) {
-      print("Erreur lors de la lecture du fichier : $e");
-    }
-    return null;
+  Future<UserData?> readData() async {
+    final isar = await db;
+    return await isar.userDatas.where().findFirst();
   }
 }

@@ -58,6 +58,7 @@ class CountryStore extends StateNotifier<AppCountryState?> {
     return shuffledCountries.take(20).toList();
   }
 
+
   Country getOneRandomCountry() {
     if (state == null || state!.countries.isEmpty) {
       throw Exception("La liste des pays est vide ou non initialisée.");

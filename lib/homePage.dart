@@ -1,4 +1,5 @@
 import 'package:daltons/appBar.dart';
+import 'package:daltons/countryStore.dart';
 import 'package:daltons/pageStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,6 +9,8 @@ void main() {
 }
 
 class FlagGuessingApp extends StatelessWidget {
+  const FlagGuessingApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,10 +21,13 @@ class FlagGuessingApp extends StatelessWidget {
 }
 
 class HomePage extends ConsumerWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AppStoreState state = ref.watch(appStoreProvider);
     final AppStore store = ref.read(appStoreProvider.notifier);
+    final countryStore = CountryStore();
     
     return Scaffold(
       appBar: CustomAppBar(),

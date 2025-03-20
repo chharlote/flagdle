@@ -16,7 +16,6 @@ class CustomPopup {
               children: <Widget>[
                 Text('Capitale : ${country.capital}\n'),
                 Text('Continent : ${country.continent}\n'),
-                Text('Président(e) : ${country.presidentName}\n'),
                 Text('Superficie : ${country.size} \n'),
                 Text('Population : ${country.population} habitants\n'),
               ],

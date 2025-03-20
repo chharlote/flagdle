@@ -9,11 +9,8 @@ final appStoreProvider = StateNotifierProvider<GameStore, GameStoreState>((ref) 
 });
 
 class GameStore extends StateNotifier<GameStoreState> {
-  GameStore() : super(GameStoreState.init()) {
-    SharedPreferences.getInstance().then((prefs) {
-      var prevHeight = prefs.getDouble(AppConst.scoreKey);
-    });
-  }
+  GameStore() : super(GameStoreState.init());
+
 
   GameStoreState getState() {
     return state;
@@ -47,8 +44,8 @@ class GameStore extends StateNotifier<GameStoreState> {
     modifyScore(1);
   }
 
-  void decreaseScore() {
-    modifyScore(-1);
+  void mantainScore() {
+    modifyScore(0);
   }
 
 }

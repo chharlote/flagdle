@@ -1,4 +1,6 @@
+import 'package:daltons/countryStore.dart';
 import 'package:daltons/homePage.dart';
+import 'package:daltons/popUpCountry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,8 +24,7 @@ class AppStore extends StateNotifier<AppStoreState>{
   }
 
 
-  void openPlay(BuildContext context){
-    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Play()));
+  void openPlay(BuildContext context) {
   }
 
   void openCredit(BuildContext context){

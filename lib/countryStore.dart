@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:riverpod/riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'AppConst.dart';
+import "dart:math";
 
 
 final countryStoreProvider = StateNotifierProvider<CountryStore, AppCountryState?>((ref) {
@@ -47,6 +48,21 @@ class CountryStore extends StateNotifier<AppCountryState?> {
     }
   }
 
+  List<Country> getTwentyRandomCountry() {
+    if (state == null || state!.countries.isEmpty) {
+      throw Exception("La liste des pays est vide ou non initialisée.");
+    }
+    final random = Random();
+    List<Country> shuffledCountries = List.from(state!.countries)..shuffle(random);
+
+    return shuffledCountries.take(20).toList();
+  }
+
+  Country? getCountryByISO2(String iso2) {
+    return state?.countries.firstWhere(
+          (c) => c.iso2.toLowerCase() == iso2.toLowerCase()
+    );
+  }
 
 
 }

@@ -25,9 +25,9 @@ class AppStore extends StateNotifier<AppStoreState>{
   }
 
 
+
   void openPlay(BuildContext context){
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Play()));
-  }
 
   void openCredit(BuildContext context){
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Credit()));

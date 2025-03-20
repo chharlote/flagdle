@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'countryStore.dart';
+
 
 class CustomPopup {
 
-  static void show(BuildContext context) {
+  static void show(BuildContext context,{required Country country}) {
     showDialog(
       context: context,
       builder: (BuildContext context) {

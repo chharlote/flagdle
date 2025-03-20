@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:riverpod/riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,17 +12,14 @@ final countryStoreProvider = StateNotifierProvider<CountryStore, AppCountryState
 
 class CountryStore extends StateNotifier<AppCountryState?> {
   CountryStore() : super(null) {
-    _loadPreviousData();
+    getCountries();
   }
 
-  Future<void> _loadPreviousData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var prevHeight = prefs.getDouble("heightKey");
-  }
 
   Future<void> getCountries() async {
     final apiKey = AppConst.API_KEY;
-    final url = Uri.parse('https://restfulcountries.com/api/v1/countries?token=$apiKey');
+    final url = Uri.parse(
+        'https://restfulcountries.com/api/v1/countries?token=$apiKey');
 
     final response = await http.get(
       url,

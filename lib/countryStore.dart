@@ -58,6 +58,14 @@ class CountryStore extends StateNotifier<AppCountryState?> {
     return shuffledCountries.take(20).toList();
   }
 
+  Country getOneRandomCountry() {
+    if (state == null || state!.countries.isEmpty) {
+      throw Exception("La liste des pays est vide ou non initialisée.");
+    }
+    final random = Random();
+    return state!.countries[random.nextInt(state!.countries.length)];
+  }
+
   Country? getCountryByISO2(String iso2) {
     return state?.countries.firstWhere(
           (c) => c.iso2.toLowerCase() == iso2.toLowerCase()

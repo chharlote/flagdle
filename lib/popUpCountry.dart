@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'countryStore.dart';
 
-
 class CustomPopup {
-
-  static void show(BuildContext context,{required Country country}) {
+  static void show(BuildContext context, {required Country country}) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -13,16 +10,15 @@ class CustomPopup {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
-          title: Text("", style: const TextStyle(fontWeight: FontWeight.bold)),
+          title: Text(country.countryName, style: const TextStyle(fontWeight: FontWeight.bold)), // Affiche le nom du pays
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('Capitale : \n'),
-                Text('Continent : \n'),
-                Text('Président(e) : \n'),
-                Text('Superficie : \n'),
-                Text('Population : \n'),
-
+                Text('Capitale : ${country.capital}\n'),
+                Text('Continent : ${country.continent}\n'),
+                Text('Président(e) : ${country.presidentName}\n'),
+                Text('Superficie : ${country.size} \n'),
+                Text('Population : ${country.population} habitants\n'),
               ],
             ),
           ),

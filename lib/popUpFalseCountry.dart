@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'countryStore.dart';
 
 class FalseCountryPopup {
-  static void show(BuildContext context) {
+  static void show(BuildContext context, {required Country country}) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -19,17 +20,11 @@ class FalseCountryPopup {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text("Désolé, la réponse est incorrecte.\nEssaye encore !",
+                Text("La bonne réponse était : ${country.countryName}\n",
                     style: const TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
           ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text("Réessayer", style: TextStyle(color: Colors.pinkAccent)),
-            ),
-          ],
         );
       },
     );

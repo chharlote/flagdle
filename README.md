@@ -1,21 +1,41 @@
-# daltons
+# Flagdle (Projet Daltons)
 
-# GERME Charlotte
-# PINCEEL Matttttttttttttttttttttttttttthieu
-# FONTAINE Aurélien 
-# DELETANG-DEVIN Noa
+**Flagdle** est une application mobile ludique développée avec Flutter. Le jeu s'articule autour de la découverte de pays en utilisant les données de l'API RestfulCountries.
 
-A new Flutter project.
+## 👥 Équipe de Développement
 
-## Getting Started
+Ce projet a été réalisé par :
+* **GERME Charlotte**
+* **PINCEEL Matthieu**
+* **FONTAINE Aurélien**
+* **DELETANG-DEVIN Noa**
 
-This project is a starting point for a Flutter application.
+## ✨ Fonctionnalités Principales
 
-A few resources to get you started if this is your first Flutter project:
+* **Jeu de culture générale** : Devinez et découvrez des informations sur les pays du monde entier.
+* **Intégration d'API externe** : Récupération dynamique des données (capitale, code ISO, continent, taille, population, nom du président) via l'API `restfulcountries.com`.
+* **Sélection aléatoire** : Le jeu peut tirer au sort 20 pays ou un pays unique pour les sessions de jeu.
+* **Gestion et sauvegarde du score** : Le score du joueur augmente, diminue ou se maintient en fonction des réponses, et est sauvegardé localement sur l'appareil.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🛠️ Technologies et Dépendances
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+L'application utilise plusieurs bibliothèques incontournables de l'écosystème Flutter :
+
+* [**Flutter Riverpod**](https://riverpod.dev/) (`flutter_riverpod: ^2.6.1`) : Pour une gestion d'état robuste et réactive.
+* [**HTTP**](https://pub.dev/packages/http) (`http: ^1.3.0`) : Pour effectuer les requêtes web vers l'API RestfulCountries.
+* [**Shared Preferences**](https://pub.dev/packages/shared_preferences) (`shared_preferences: ^2.5.2`) : Pour la persistance des données légères, comme la sauvegarde du score du joueur.
+* [**Isar**](https://isar.dev/) (`isar: ^3.1.0+1`) : Pour la base de données locale hautement performante (si applicable pour d'autres fonctionnalités).
+
+## 🚀 Installation et Exécution
+
+### Prérequis
+
+* Avoir installé le SDK [Flutter](https://docs.flutter.dev/get-started/install).
+* Un émulateur iOS/Android ou un appareil physique connecté.
+
+### Étapes
+
+1. **Cloner le dépôt :**
+   ```bash
+   git clone <URL_DU_DEPOT>
+   cd daltons
